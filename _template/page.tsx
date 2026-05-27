@@ -1,6 +1,10 @@
 // TEMPLATE — copied + placeholder-replaced by scripts/factory/scaffold-demo.mjs
 // when a new theme ships. The leading underscore makes Next.js skip this folder
 // for routing, so /demand/_template is NOT a real URL.
+//
+// Repeat-block markers (FAQ_ITEM_START..FAQ_ITEM_END) are expanded once per
+// faq entry by scaffold-demo.mjs. If no faqs exist, the whole FAQ_SECTION
+// block is removed.
 
 import Link from "next/link";
 
@@ -45,13 +49,32 @@ export default function DemandPage() {
           <h2 className="text-3xl font-semibold tracking-tight mb-10">
             {{FEATURES_HEADLINE}}
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 gap-x-8 gap-y-10">
             <Feature title="{{FEATURE_1_TITLE}}" body="{{FEATURE_1_BODY}}" />
             <Feature title="{{FEATURE_2_TITLE}}" body="{{FEATURE_2_BODY}}" />
             <Feature title="{{FEATURE_3_TITLE}}" body="{{FEATURE_3_BODY}}" />
+            <Feature title="{{FEATURE_4_TITLE}}" body="{{FEATURE_4_BODY}}" />
           </div>
         </div>
       </section>
+
+      {/* FAQ_SECTION_START */}
+      <section className="px-6 py-20 border-t border-border">
+        <div className="max-w-3xl mx-auto">
+          <h2 className="text-3xl font-semibold tracking-tight mb-10">
+            Frequently asked
+          </h2>
+          <dl className="space-y-8">
+            {/* FAQ_ITEM_START */}
+            <div>
+              <dt className="text-lg font-medium mb-2 text-foreground">{{FAQ_Q}}</dt>
+              <dd className="text-muted leading-relaxed">{{FAQ_A}}</dd>
+            </div>
+            {/* FAQ_ITEM_END */}
+          </dl>
+        </div>
+      </section>
+      {/* FAQ_SECTION_END */}
 
       <section id="cta" className="px-6 py-20 border-t border-border bg-accent-soft">
         <div className="max-w-3xl mx-auto text-center">
@@ -78,6 +101,7 @@ export default function DemandPage() {
 }
 
 function Feature({ title, body }: { title: string; body: string }) {
+  if (!title || title.includes("{{")) return null;
   return (
     <div>
       <h3 className="text-lg font-semibold mb-2">{title}</h3>
