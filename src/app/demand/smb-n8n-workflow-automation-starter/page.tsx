@@ -85,12 +85,7 @@ export default function DemandPage() {
             
 
             <div>
-              <dt className="text-lg font-medium mb-2 text-foreground">What does the 
-            <div>
-              <dt className="text-lg font-medium mb-2 text-foreground">{{FAQ_Q}}</dt>
-              <dd className="text-muted leading-relaxed">{{FAQ_A}}</dd>
-            </div>
-            50/month retainer cover?</dt>
+              <dt className="text-lg font-medium mb-2 text-foreground">What does the $150/month retainer cover?</dt>
               <dd className="text-muted leading-relaxed">Monitoring, bug fixes, API key renewals, and one workflow tweak per month — so the system never quietly breaks on you.</dd>
             </div>
             
