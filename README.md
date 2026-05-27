@@ -13,7 +13,7 @@ The master showcase site for the AI Automation Factory. Every approved theme tha
 When a theme is approved in Telegram:
 1. `Approved Theme Builder` (n8n) fires the build kickoff webhook.
 2. GH Actions clones this repo, runs `scaffold-demo.mjs`:
-   - copies `src/app/demand/_template/` → `src/app/demand/<slug>/`
+   - copies `_template/` → `src/app/demand/<slug>/`
    - substitutes `{{PLACEHOLDER}}` tokens from `theme_artifacts.demo_copy`
    - writes `meta.json` with title, eyebrow, hook, builtAt
 3. Commits + pushes. Vercel rebuilds.
@@ -22,7 +22,7 @@ When a theme is approved in Telegram:
 ## Adding a theme (manual)
 
 ```bash
-cp -R src/app/demand/_template src/app/demand/my-new-theme
+cp -R _template src/app/demand/my-new-theme
 # edit page.tsx and meta.json, replace placeholders
 git add . && git commit -m "add my-new-theme" && git push
 ```
